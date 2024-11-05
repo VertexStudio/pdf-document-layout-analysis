@@ -34,10 +34,10 @@ done
 
 # Only two rules needed:
 # 1. Allow incoming traffic to the specified port
-iptables -A DOCKER-USER -p tcp --dport "$CONTAINER_PORT" -d "$CONTAINER_IP" -j ACCEPT
+iptables -I DOCKER-USER -p tcp --dport "$CONTAINER_PORT" -d "$CONTAINER_IP" -j ACCEPT
 
 # 2. Block EVERYTHING else from this container
-iptables -A DOCKER-USER -s "$CONTAINER_IP" -j DROP
+iptables -I DOCKER-USER -s "$CONTAINER_IP" -j DROP
 
 echo "Strict container isolation applied:"
 echo " - Container: $CONTAINER_NAME_OR_ID"
